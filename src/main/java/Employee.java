@@ -21,4 +21,17 @@ public class Employee {
     public void setPartTimeHour(){
         this.fullDayHour=8;
     }
+
+    public boolean isPartTimeEmployee(){
+        int id=(int)Math.round(Math.random());
+
+        switch (id){
+            case 0:
+                System.out.println("worker is a part time employee");
+                return true;
+            default:
+                System.out.println("Worker is a full time employee");
+                return false;
+        }
+    }
 }
