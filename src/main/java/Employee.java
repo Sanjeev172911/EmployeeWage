@@ -8,7 +8,7 @@ public class Employee {
         this.wagePerHour=wagePerHour;
         this.fullDayHour=fullDayHour;
         this.workingDayInMonth=workingDayInMonth;
-        int []workingHourPerDay=new int [workingDayInMonth];
+        workingHourPerDay=new int [workingDayInMonth];
 
         for(int i=0;i<workingDayInMonth;i++) workingHourPerDay[i]=workingHours[i];
     }
@@ -49,7 +49,9 @@ public class Employee {
         int days=0;
         int hours=0;
         int totalWage=0;
+
         while(days<workingHourPerDay.length && days<=20 && hours<=100){
+
             totalWage+=workingHourPerDay[days]*wagePerHour;
             hours+=workingHourPerDay[days];
             days++;

@@ -7,5 +7,14 @@ public class Main {
         Employee employee=new Employee(20,8,5,temp);
 
         employee.isEmployeePresent();
+
+        System.out.println(employee.calculateDailyWage());
+
+        if(employee.isPartTimeEmployee()){
+            employee.setPartTimeHour();
+        }
+
+        System.out.println("Daily Wage of employee is "+employee.calculateDailyWage());
+        System.out.println("Monthly wage "+employee.calculateWage());
     }
 }
