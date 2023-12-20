@@ -17,4 +17,8 @@ public class Employee {
     public int calculateDailyWage(){
         return wagePerHour*fullDayHour;
     }
+
+    public void setPartTimeHour(){
+        this.fullDayHour=8;
+    }
 }
