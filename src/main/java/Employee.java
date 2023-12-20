@@ -1,10 +1,12 @@
 public class Employee {
     int wagePerHour;
     int fullDayHour;
+    int workingDayInMonth;
 
-    Employee(int wagePerHour,int fullDayHour){
+    Employee(int wagePerHour,int fullDayHour,int workingDayInMonth){
         this.wagePerHour=wagePerHour;
         this.fullDayHour=fullDayHour;
+        this.workingDayInMonth=workingDayInMonth;
     }
 
     public boolean isEmployeePresent(){
@@ -33,5 +35,9 @@ public class Employee {
                 System.out.println("Worker is a full time employee");
                 return false;
         }
+    }
+
+    public int calculateMonthlyWage(){
+        return wagePerHour*fullDayHour*workingDayInMonth;
     }
 }
