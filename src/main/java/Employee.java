@@ -13,11 +13,11 @@ public class Employee {
         for(int i=0;i<workingDayInMonth;i++) workingHourPerDay[i]=workingHours[i];
     }
 
-    public boolean isEmployeePresent(){
+    public void isEmployeePresent(){
         double chancePresent=Math.random();
 
-        if(chancePresent<.5) return false;
-        return true;
+        if(chancePresent<.5) System.out.println("Employee is absent");
+        else System.out.println("employee is present");
     }
 
     public int calculateDailyWage(){
