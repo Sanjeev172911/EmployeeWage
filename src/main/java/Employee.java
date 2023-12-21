@@ -1,31 +1,30 @@
 public class Employee {
-    int wagePerHour;
-    int fullDayHour;
-    int workingDayInMonth;
+    int id;
+    int companyId;
     int []workingHourPerDay;
-
-    Employee(int wagePerHour,int fullDayHour,int workingDayInMonth,int []workingHours){
-        this.wagePerHour=wagePerHour;
-        this.fullDayHour=fullDayHour;
-        this.workingDayInMonth=workingDayInMonth;
-        workingHourPerDay=new int [workingDayInMonth];
-
-        for(int i=0;i<workingDayInMonth;i++) workingHourPerDay[i]=workingHours[i];
+    Employee(int id,int companyId,int []workingHours){
+        this.id=id;
+        this.companyId=companyId;
+        int days=workingHours.length;
+        workingHourPerDay=new int [days];
+        for(int i=0;i<days;i++) workingHourPerDay[i]=workingHours[i];
     }
 
-    public void isEmployeePresent(){
+    public boolean isEmployeePresent(){
         double chancePresent=Math.random();
 
-        if(chancePresent<.5) System.out.println("Employee is absent");
-        else System.out.println("employee is present");
+        if(chancePresent<.5){
+            System.out.println("Employee is absent");
+            return false;
+        }
+        else{
+            System.out.println("employee is present");
+            return true;
+        }
     }
 
-    public int calculateDailyWage(){
+    public int calculateDailyWage(int wagePerHour,int fullDayHour){
         return wagePerHour*fullDayHour;
-    }
-
-    public void setPartTimeHour(){
-        this.fullDayHour=8;
     }
 
     public boolean isPartTimeEmployee(){
@@ -41,16 +40,16 @@ public class Employee {
         }
     }
 
-    public int calculateMonthlyWage(){
+    public int calculateMaximumMonthlyWage(int wagePerHour,int fullDayHour,int workingDayInMonth){
         return wagePerHour*fullDayHour*workingDayInMonth;
     }
 
-    public int calculateWage(){
+    public int calculateTotalWage(int workingDayInMonth,int workingHoursInMonth,int wagePerHour){
         int days=0;
         int hours=0;
         int totalWage=0;
 
-        while(days<workingHourPerDay.length && days<=20 && hours<=100){
+        while(days<workingHourPerDay.length && days<=workingDayInMonth && hours<=workingHoursInMonth){
 
             totalWage+=workingHourPerDay[days]*wagePerHour;
             hours+=workingHourPerDay[days];
