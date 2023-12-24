@@ -52,6 +52,8 @@ public class Main {
         Company company=companyDataBase.get(employee.companyId);
 
         EmployeeWage employeeWageBuilder=new EmployeeWageBuilder();
+
+        // Daily Wage 
         if(employeeWageBuilder.isEmployeePresent()){
             System.out.println("Daily Wage "+employeeWageBuilder.calculateDailyWage(company.wagePerHour,company.fullDayHour));
         }
