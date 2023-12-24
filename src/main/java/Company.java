@@ -26,11 +26,12 @@ public class Company {
 
     public int getTotalWage(){
         int totalAmount=0;
+
         for(Employee employee:employees){
             employee=new EmployeeWageBuilder();
             totalAmount+=employee.calculateTotalWage(workingDayInMonth,workingHoursInMonth,wagePerHour);
         }
-
+        
         this.totalWage=totalAmount;
         return totalAmount;
     }

@@ -1,5 +1,6 @@
 class EmployeeWageBuilder extends Employee{
 
+
     public boolean isEmployeePresent(){
         double chancePresent=Math.random();
 
