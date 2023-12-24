@@ -1,5 +1,4 @@
-class EmployeeWageBuilder extends Employee{
-
+class EmployeeWageBuilder implements EmployeeWage{
 
     public boolean isEmployeePresent(){
         double chancePresent=Math.random();
@@ -35,8 +34,8 @@ class EmployeeWageBuilder extends Employee{
         return wagePerHour*fullDayHour*workingDayInMonth;
     }
 
-    @Override
-    public int calculateTotalWage(int workingDayInMonth,int workingHoursInMonth,int wagePerHour){
+
+    public int calculateTotalWage(int workingDayInMonth,int workingHoursInMonth,int wagePerHour,int []workingHourPerDay){
         int days=0;
         int hours=0;
         int totalWage=0;

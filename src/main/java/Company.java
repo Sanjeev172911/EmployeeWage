@@ -28,8 +28,8 @@ public class Company {
         int totalAmount=0;
 
         for(Employee employee:employees){
-            employee=new EmployeeWageBuilder();
-            totalAmount+=employee.calculateTotalWage(workingDayInMonth,workingHoursInMonth,wagePerHour);
+            EmployeeWage obj=new EmployeeWageBuilder();
+            totalAmount+=obj.calculateTotalWage(workingDayInMonth,workingHoursInMonth,wagePerHour,employee.workingHourPerDay);
         }
         
         this.totalWage=totalAmount;

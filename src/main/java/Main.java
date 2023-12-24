@@ -48,21 +48,21 @@ public class Main {
                 "Wage Computation");
 
         takeInputForCompany();
-        Employee employe=takeInputForEmployee();
-        Company company=companyDataBase.get(employe.companyId);
+        Employee employee=takeInputForEmployee();
+        Company company=companyDataBase.get(employee.companyId);
 
-        EmployeeWageBuilder employee=new EmployeeWageBuilder();
-        if(employee.isEmployeePresent()){
-            System.out.println("Daily Wage "+employee.calculateDailyWage(company.wagePerHour,company.fullDayHour));
+        EmployeeWage employeeWageBuilder=new EmployeeWageBuilder();
+        if(employeeWageBuilder.isEmployeePresent()){
+            System.out.println("Daily Wage "+employeeWageBuilder.calculateDailyWage(company.wagePerHour,company.fullDayHour));
         }
 
-        employee.isPartTimeEmployee();
+        employeeWageBuilder.isPartTimeEmployee();
 
         System.out.println("Maximum Monthly Wage of Employee Id "+employee.id+" is "+
-                employee.calculateMaximumMonthlyWage(company.wagePerHour,company.fullDayHour,company.workingDayInMonth));
+                employeeWageBuilder.calculateMaximumMonthlyWage(company.wagePerHour,company.fullDayHour,company.workingDayInMonth));
 
         System.out.println("Total Monthly Wage of Employee Id "+employee.id+" is "+
-                employee.calculateTotalWage(company.workingDayInMonth,company.workingHoursInMonth,company.wagePerHour));
+                employeeWageBuilder.calculateTotalWage(company.workingDayInMonth,company.workingHoursInMonth,company.wagePerHour, employee.workingHourPerDay));
 
     }
 }
