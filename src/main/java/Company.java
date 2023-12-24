@@ -8,6 +8,7 @@ public class Company {
     int workingHoursInMonth;
     int partTimeHour;
     int totalWage;
+    int dailyWage;
     ArrayList<Employee>employees;
 
     public Company(){
@@ -22,6 +23,7 @@ public class Company {
         this.workingHoursInMonth=workingHoursInMonth;
         this.partTimeHour=partTimeHour;
         totalWage=0;
+        dailyWage=0;
     }
 
     public int getTotalWage(){
@@ -33,6 +35,18 @@ public class Company {
         }
         
         this.totalWage=totalAmount;
+        return totalAmount;
+    }
+
+    public int getDailyWage() {
+        int totalAmount=0;
+
+        for(Employee employee:employees){
+            EmployeeWage obj=new EmployeeWageBuilder();
+            totalAmount+=obj.calculateDailyWage(wagePerHour,fullDayHour);
+        }
+
+        this.dailyWage=totalAmount;
         return totalAmount;
     }
 }
