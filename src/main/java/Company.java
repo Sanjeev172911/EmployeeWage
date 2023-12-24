@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Company {
     int companyId;
     int wagePerHour;
@@ -5,6 +7,8 @@ public class Company {
     int workingDayInMonth;
     int workingHoursInMonth;
     int partTimeHour;
+    int totalWage;
+    ArrayList<Employee>employees;
 
     public Company(){
 
@@ -17,5 +21,17 @@ public class Company {
         this.workingDayInMonth=workingDayInMonth;
         this.workingHoursInMonth=workingHoursInMonth;
         this.partTimeHour=partTimeHour;
+        totalWage=0;
+    }
+
+    public int getTotalWage(){
+        int totalAmount=0;
+        for(Employee employee:employees){
+            employee=new EmployeeWageBuilder();
+            totalAmount+=employee.calculateTotalWage(workingDayInMonth,workingHoursInMonth,wagePerHour);
+        }
+
+        this.totalWage=totalAmount;
+        return totalAmount;
     }
 }

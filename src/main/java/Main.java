@@ -3,7 +3,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
-    static Map<Integer,Company> dataBase;
+    static Map<Integer,Company> companyDataBase;
 
     public static void takeInputForCompany(){
         Scanner input=new Scanner(System.in);
@@ -21,7 +21,7 @@ public class Main {
         int partTimeHour=input.nextInt();
 
         Company company=new Company(id,wagePerHour,fullDayHour,workingHoursInMonth,workingDayInMonth,partTimeHour);
-        dataBase.put(id,company);
+        companyDataBase.put(id,company);
     }
 
     public static Employee takeInputForEmployee(){
@@ -30,18 +30,28 @@ public class Main {
         int EmpId=input.nextInt();
         System.out.println("Enter Company Id ");
         int CompanyId=input.nextInt();
-        int []workingHours={5,7,5,8,7,8,6};
 
-        return new Employee(EmpId,CompanyId,workingHours);
+        if(!companyDataBase.containsKey(CompanyId)){
+            System.out.println("Take Input for Company Id : "+CompanyId);
+        }
+
+        int []workingHours={5,7,5,8,7,8,6};
+        Employee newEmployee=new Employee(EmpId,CompanyId,workingHours);
+        Company company=companyDataBase.get(CompanyId);
+        company.employees.add(newEmployee);
+
+        return newEmployee;
     }
     public static void main(String[] args) {
-        dataBase=new HashMap<>();
+        companyDataBase=new HashMap<>();
         System.out.println("Welcome to Employee\n" +
                 "Wage Computation");
 
         takeInputForCompany();
-        Employee employee=takeInputForEmployee();
-        Company company=dataBase.get(employee.companyId);
+        Employee employe=takeInputForEmployee();
+        Company company=companyDataBase.get(employe.companyId);
+
+        EmployeeWageBuilder employee=new EmployeeWageBuilder();
         if(employee.isEmployeePresent()){
             System.out.println("Daily Wage "+employee.calculateDailyWage(company.wagePerHour,company.fullDayHour));
         }
