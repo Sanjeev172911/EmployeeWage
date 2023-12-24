@@ -24,6 +24,7 @@ public class Company {
         this.partTimeHour=partTimeHour;
         totalWage=0;
         dailyWage=0;
+        employees=new ArrayList<>();
     }
 
     public int getTotalWage(){

@@ -66,5 +66,7 @@ public class Main {
         System.out.println("Total Monthly Wage of Employee Id "+employee.id+" is "+
                 employeeWageBuilder.calculateTotalWage(company.workingDayInMonth,company.workingHoursInMonth,company.wagePerHour, employee.workingHourPerDay));
 
+        // Total wage for a company
+        System.out.println("Total Wage of Company id: "+company.companyId+" is "+company.getTotalWage());
     }
 }
